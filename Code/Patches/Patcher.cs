@@ -11,7 +11,7 @@ namespace DistrictStylesPlus.Code.Patches
     {
 
         // Unique harmony ID
-        private const string HarmonyId = "com.github.meda22.csl.districtstylesplus";
+        private const string HarmonyId = "com.github.jk2l.csl.DistrictStylesPlus";
         
         // flag
         internal static bool patched { get; private set; } = false;

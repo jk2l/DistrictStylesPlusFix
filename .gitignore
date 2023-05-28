@@ -43,3 +43,6 @@ Thumbs.db
 .idea
 *.iml
 /packages/
+
+#Visual Studio
+.vs
