@@ -62,18 +62,25 @@ namespace DistrictStylesPlus.Code.GUI
 
         public override void Awake()
         {
-            base.Awake();
+            try
+            {
+                base.Awake();
 
-            var iconPath = UUIHelpers.GetFullPath<DistrictStylesPlusMod>("Resources", "DSEdit.png");
-            var icon = UUIHelpers.LoadTexture(iconPath);
+                var iconPath = UUIHelpers.GetFullPath<DistrictStylesPlusMod>("Resources", "DSEdit.png");
+                var icon = UUIHelpers.LoadTexture(iconPath);
 
-            _uuiButton = UUIHelpers.RegisterCustomButton(
-                name: nameof(DistrictStylesPlusMod),
-                groupName: null,
-                tooltip: "Open district styles editor",
-                icon: icon, 
-                onToggle: (value) => Toggle()
-            );
+                _uuiButton = UUIHelpers.RegisterCustomButton(
+                    name: nameof(DistrictStylesPlusMod),
+                    groupName: null,
+                    tooltip: "Open district styles editor",
+                    icon: icon,
+                    onToggle: (value) => Toggle()
+                );
+            }
+            catch (Exception e) 
+            {
+                Logging.LogException(e, "Exception when awake DistrictStyleEditorPanel");
+            }
         }
 
         /// <summary>

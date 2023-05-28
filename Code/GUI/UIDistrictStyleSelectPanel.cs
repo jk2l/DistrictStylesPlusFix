@@ -1,6 +1,6 @@
-﻿using ColossalFramework;
-using ColossalFramework.UI;
+﻿using ColossalFramework.UI;
 using DistrictStylesPlus.Code.Managers;
+using DistrictStylesPlus.Code.Utils;
 using UnityEngine;
 using static DistrictStylesPlus.Code.GUI.DistrictStyleEditorPanel;
 
@@ -28,7 +28,7 @@ namespace DistrictStylesPlus.Code.GUI
         
         internal void RefreshDistrictStyleSelect()
         {
-            _districtStyleSelect.rowsData = GetStoredDistrictStyles();
+            _districtStyleSelect.rowsData = DSPDistrictStylesUtils.StoredDistrictStyles;
         }
 
         private void SetupAddStyleButton()
@@ -80,7 +80,7 @@ namespace DistrictStylesPlus.Code.GUI
             _districtStyleSelect.autoHideScrollbar = true;
             _districtStyleSelect.relativePosition = Vector3.zero;
 
-            _districtStyleSelect.rowsData = GetStoredDistrictStyles();
+            _districtStyleSelect.rowsData = DSPDistrictStylesUtils.StoredDistrictStyles;
 
             _districtStyleSelect.eventSelectedIndexChanged += (component, value) =>
             {
@@ -102,38 +102,6 @@ namespace DistrictStylesPlus.Code.GUI
         internal void RefreshDistrictStyleSelectList()
         {
             _districtStyleSelect.Refresh();
-        }
-
-        private FastList<object> GetStoredDistrictStyles()
-        {
-            var districtStyles = Singleton<DistrictManager>.instance.m_Styles;
-
-            var resultData = new FastList<object>();
-            if (districtStyles.Length <= 0) return resultData;
-            
-            foreach (var districtStyle in districtStyles)
-            {
-                // transient style for district should not be shown
-                if (districtStyle.PackageName.Equals(DSPTransientStyleManager.TransientStylePackage)) continue;
-
-                // styles for not owned DLCs or CCP should not be shown
-                if (districtStyle.Name.Equals(DistrictStyle.kEuropeanStyleName) 
-                    && !SteamHelper.IsDLCOwned(SteamHelper.DLC.ModderPack3))
-                    continue;
-                if (districtStyle.Name.Equals(DistrictStyle.kModderPack5StyleName) 
-                    && !SteamHelper.IsDLCOwned(SteamHelper.DLC.ModderPack5))
-                    continue;
-                if (districtStyle.Name.Equals(DistrictStyle.kModderPack11StyleName) 
-                    && !SteamHelper.IsDLCOwned(SteamHelper.DLC.ModderPack11))
-                    continue;
-                if (districtStyle.Name.Equals(DistrictStyle.kModderPack14StyleName) 
-                    && !SteamHelper.IsDLCOwned(SteamHelper.DLC.ModderPack14))
-                    continue;
-
-                resultData.Add(districtStyle);
-            }
-
-            return resultData;
         }
         
     }

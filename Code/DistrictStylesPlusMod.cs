@@ -12,7 +12,7 @@ namespace DistrictStylesPlus.Code
         internal static string modName => "District Styles Plus";
         internal static string version => baseVersion + " " + versionNote;
         internal static string versionNote => "alpha wip";
-        private static string baseVersion => "0.4.4";
+        private static string baseVersion => "0.4.5";
 
         public string Name => modName + " " + version;
         public string Description => "Enhances district styles functionality and extends DS configuration possibilities";
