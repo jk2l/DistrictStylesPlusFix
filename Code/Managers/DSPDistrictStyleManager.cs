@@ -20,7 +20,7 @@ namespace DistrictStylesPlus.Code.Managers
         /// Creates new in-game district style and also a asset package for it.
         /// </summary>
         /// <param name="districtStyleName">name of new district style</param>
-        internal static void CreateDistrictStyle(string districtStyleName)
+        internal static DistrictStyle CreateDistrictStyle(string districtStyleName)
         {
             var districtStyleMetaData = new DistrictStyleMetaData
             {
@@ -37,6 +37,8 @@ namespace DistrictStylesPlus.Code.Managers
             
             // refresh style buildings in building manager
             Singleton<DSPBuildingManager>.instance.RefreshStylesInBuildingManager();
+
+            return newDistrictStyle;
         }
         
         /// <summary>
