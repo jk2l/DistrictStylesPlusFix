@@ -206,11 +206,6 @@ namespace DistrictStylesPlus.Code.GUI
         
         public static UITextureAtlas GetAtlas(string name)
         {
-            if (name == "DspAtlas")
-            {
-                return ResourceLoader.atlas;
-            }
-
             if (s_atlases == null)
                 s_atlases = Resources.FindObjectsOfTypeAll(typeof(UITextureAtlas)) as UITextureAtlas[];
 

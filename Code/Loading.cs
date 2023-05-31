@@ -89,13 +89,6 @@ namespace DistrictStylesPlus.Code
                 return;
             }
 
-
-            /*var spriteNames = new List<string>();
-            foreach (ModderPackInfo info in ModderPackInfos.config) {
-                spriteNames.Add(info.spriteName);
-                spriteNames.Add(info.spriteName + "Disabled");
-            }*/
-
             string[] spriteNames = new string[ModderPackInfos.config.Length * 2];
             for (int i = 0; i < ModderPackInfos.config.Length; i++)
             {
