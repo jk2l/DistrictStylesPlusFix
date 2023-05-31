@@ -1,10 +1,14 @@
 ﻿using System;
+using System.Collections.Generic;
 using ColossalFramework;
+using ColossalFramework.UI;
 using DistrictStylesPlus.Code.GUI;
 using DistrictStylesPlus.Code.GUI.DistrictStylePicker;
 using DistrictStylesPlus.Code.Managers;
 using DistrictStylesPlus.Code.Patches;
 using DistrictStylesPlus.Code.Utils;
+using Epic.OnlineServices.Presence;
+using HarmonyLib;
 using ICities;
 
 namespace DistrictStylesPlus.Code
@@ -14,7 +18,6 @@ namespace DistrictStylesPlus.Code
     /// </summary>
     public class Loading : LoadingExtensionBase
     {
-
         internal static bool IsModEnabled = false;
         internal static bool IsModLoaded = false;
         private static bool _harmonyLoaded = false;
@@ -85,7 +88,15 @@ namespace DistrictStylesPlus.Code
             {
                 return;
             }
-            
+
+            string[] spriteNames = new string[ModderPackInfos.config.Length * 2];
+            for (int i = 0; i < ModderPackInfos.config.Length; i++)
+            {
+                spriteNames[i*2]      = ModderPackInfos.config[i].spriteName;
+                spriteNames[i*2 + 1]    = ModderPackInfos.config[i].spriteName + "Disabled";
+            }
+
+            ResourceLoader.CreateTextureAtlas("DspAtlas", spriteNames, "DistrictStylesPlusFix.Icons.");
             Singleton<DistrictStylesPlusManager>.instance.SetupDistrictStylesPlusManager();
             DistrictStyleEditorPanel.Initialize();
             DistrictStylesEditorButton.CreateDistrictStylesEditorButton();

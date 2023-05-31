@@ -12,9 +12,9 @@ namespace DistrictStylesPlus.Code.GUI
     {
         #region Constant values for UI formatting
         private const float StyleSelectPanelWidth = 250;
-        private const float BuildingSelectPanelWidth = 520;
+        private const float BuildingSelectPanelWidth = 600;
         private const float BuildingDetailsPanelWidth = 250;
-        private const float Height = 550;
+        private const float Height = 600;
         internal const float Spacing = 5;
         private const float TitleHeight = 40;
         #endregion
@@ -147,14 +147,14 @@ namespace DistrictStylesPlus.Code.GUI
         {
             _buildingFilter = AddUIComponent<UIBuildingFilter>();
             _buildingFilter.width = width - Spacing * 2;
-            _buildingFilter.height = 70;
+            _buildingFilter.height = 120;
             _buildingFilter.relativePosition = new Vector3(Spacing, TitleHeight);
             _buildingFilter.eventFilteringChanged += (component, value) =>
             {
                 UIBuildingSelectPanel.Instance.FilterAndRefreshBuildingInfoSelectList();
             };
         }
-        
+
         private void SetupDistrictStyleSelectPanel()
         {
             _styleSelectPanel = AddUIComponent<UIDistrictStyleSelectPanel>();

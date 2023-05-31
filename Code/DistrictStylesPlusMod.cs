@@ -10,9 +10,7 @@ namespace DistrictStylesPlus.Code
     public class DistrictStylesPlusMod : IUserMod
     {
         internal static string modName => "District Styles Plus";
-        internal static string version => baseVersion + " " + versionNote;
-        internal static string versionNote => "alpha wip";
-        private static string baseVersion => "0.5.0";
+        internal static string version => "0.6.0";
 
         public string Name => modName + " " + version;
         public string Description => "Enhances district styles functionality and extends DS configuration possibilities";

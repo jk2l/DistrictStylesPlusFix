@@ -4,6 +4,19 @@ using UnityEngine;
 
 namespace DistrictStylesPlus.Code.GUI
 {
+    public class UICCpCheckbox : UICheckBox
+    {
+        private SteamHelper.ModderPackBitMask _bitmark = 0;
+        public SteamHelper.ModderPackBitMask bitmark
+        {
+            get => _bitmark;
+            set
+            {
+                _bitmark = value;
+            }
+        }
+    }
+
     public class UIUtils
     {
         public static UITextureAtlas[] s_atlases;
@@ -141,9 +154,9 @@ namespace DistrictStylesPlus.Code.GUI
             }
         }
         
-        public static UICheckBox CreateIconToggle(UIComponent parent, string atlas, string checkedSprite, string uncheckedSprite)
+        public static UICCpCheckbox CreateIconToggle(UIComponent parent, string atlas, string checkedSprite, string uncheckedSprite)
         {
-            UICheckBox checkBox = parent.AddUIComponent<UICheckBox>();
+            UICCpCheckbox checkBox = parent.AddUIComponent<UICCpCheckbox>();
 
             checkBox.width = 30f;
             checkBox.height = 30f;

@@ -4,6 +4,7 @@ using ColossalFramework;
 using ColossalFramework.UI;
 using DistrictStylesPlus.Code.Managers;
 using DistrictStylesPlus.Code.Utils;
+using DistrictStylesPlusFix.Code.Utils;
 using UnityEngine;
 using static DistrictStylesPlus.Code.GUI.DistrictStyleEditorPanel;
 
@@ -115,6 +116,13 @@ namespace DistrictStylesPlus.Code.GUI
                     Category category = BuildingInfoHelper.GetBuildingCategory(item);
                     if (category == Category.None || !UIBuildingFilter.Instance.IsZoneSelected(category)) continue;
                 }
+
+                // ccp
+                if (UIBuildingFilter.Instance.isDlcFilterSelected())
+                {
+                    if (item.m_requiredModderPack == 0 || !UIBuildingFilter.Instance.isDlcSelected(item.m_requiredModderPack)) continue;
+                }
+
                 // Name
                 if (!UIBuildingFilter.Instance.buildingName.IsNullOrWhiteSpace() 
                     && !item.name.ToLower().Contains(UIBuildingFilter.Instance.buildingName.ToLower())) continue;

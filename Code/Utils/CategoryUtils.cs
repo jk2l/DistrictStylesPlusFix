@@ -1,4 +1,6 @@
-﻿namespace DistrictStylesPlus.Code.GUI
+﻿using System.Collections;
+
+namespace DistrictStylesPlusFix.Code.Utils
 {
     public enum Origin
     {
@@ -108,4 +110,5 @@
             "Office financial"
         };
     }
+
 }
