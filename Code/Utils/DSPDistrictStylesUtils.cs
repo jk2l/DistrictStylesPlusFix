@@ -45,8 +45,8 @@ namespace DistrictStylesPlus.Code.Utils
                         // Maybe scope creep over the year, there was no proper style in between old and new DLC naming format
                         if (builtin_name.Equals("European"))
                         {
-                            district_name = "European";
-                            dlc_id = SteamHelper.DLC.ModderPack3;
+                            district_name = "European / Vanilla";
+                            dlc_id = SteamHelper.DLC.None;
                         }
                         else if (builtin_name.Equals("EuropeanSuburbia"))
                         {

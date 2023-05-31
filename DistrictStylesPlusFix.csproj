@@ -20,6 +20,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+	<EmbeddedResource Include="Icons\*" />
+  </ItemGroup>
+  <ItemGroup>
     <Reference Include="Assembly-CSharp">
       <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Cities_Skylines\Cities_Data\Managed\Assembly-CSharp.dll</HintPath>
       <Private>False</Private>
@@ -44,6 +47,7 @@
     <ItemGroup>
       <ModFiles Include="$(TargetDir)*.*" />
       <_Resources Include="$(ProjectDir)/Resources/*.*" />
+	  <_Icons Include="$(ProjectDir)/Icons/*.*" />
     </ItemGroup>
     <RemoveDir Directories="$(ModDirectory)" />
     <Copy SourceFiles="@(ModFiles)" DestinationFolder="$(ModDirectory)" />
