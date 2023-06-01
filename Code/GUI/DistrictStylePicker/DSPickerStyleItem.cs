@@ -37,7 +37,6 @@ namespace DistrictStylesPlus.Code.GUI.DistrictStylePicker
 
         private bool IsSelectedStyle(string fullName)
         {
-            Logging.DebugLog($"DSPickerStyleItem: IsSelectedStyle - {fullName}");
             var selectedStyleFullNames = DistrictStylePickerPanel.instance.GetSelectedStyles();
             return selectedStyleFullNames.Contains(fullName);
         }

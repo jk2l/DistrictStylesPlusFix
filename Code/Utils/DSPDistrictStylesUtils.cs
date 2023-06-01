@@ -77,12 +77,16 @@ namespace DistrictStylesPlus.Code.Utils
 
         public static string GetUserFriendlyName(DistrictStyle districtStyle)
         {
+            if (!districtStyle.BuiltIn)
+                return districtStyle.Name;
+
+            Logging.DebugLog(districtStyle.Name);
+
             var cutover = "BuiltinStyle";
             var index = districtStyle.Name.IndexOf(cutover);
             var builtin_name = districtStyle.Name.Substring(0, index);
             string district_name;
 
-            SteamHelper.DLC dlc_id;
             // Maybe scope creep over the year, there was no proper style in between old and new DLC naming format
             if (builtin_name.Equals("European"))
             {
