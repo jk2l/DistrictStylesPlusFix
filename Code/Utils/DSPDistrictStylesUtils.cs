@@ -39,28 +39,23 @@ namespace DistrictStylesPlus.Code.Utils
                         var cutover = "BuiltinStyle";
                         var index = districtStyle.Name.IndexOf(cutover);
                         var builtin_name = districtStyle.Name.Substring(0, index);
-                        string district_name;
 
                         SteamHelper.DLC dlc_id;
                         // Maybe scope creep over the year, there was no proper style in between old and new DLC naming format
                         if (builtin_name.Equals("European"))
                         {
-                            district_name = "European / Vanilla";
                             dlc_id = SteamHelper.DLC.None;
                         }
                         else if (builtin_name.Equals("EuropeanSuburbia"))
                         {
-                            district_name = "European Suburbia";
                             dlc_id = SteamHelper.DLC.ModderPack3;
                         }
                         else if (builtin_name.Equals("ModderPack5"))
                         {
-                            district_name = Locale.Get("DLC_NAME", "ModernCityCenter");
                             dlc_id = SteamHelper.DLC.ModderPack5;
                         }
                         else
                         {
-                            district_name = Locale.Get("DLC_NAME", builtin_name);
                             dlc_id = (SteamHelper.DLC)Enum.Parse(typeof(SteamHelper.DLC), builtin_name);
                         }
 
@@ -68,13 +63,7 @@ namespace DistrictStylesPlus.Code.Utils
                         if (!SteamHelper.IsDLCOwned(dlc_id))
                             continue;
 
-                        // There maybe more efficient way to deal with this instead of rebuild the DistrictStyle list
-                        DistrictStyle copy = new DistrictStyle(district_name, true);
-                        foreach (BuildingInfo info in districtStyle.GetBuildingInfos())
-                        {
-                            copy.Add(info);
-                        }
-                        resultData.Add(copy);
+                        resultData.Add(districtStyle);
                     }
                     else
                     {
@@ -84,6 +73,34 @@ namespace DistrictStylesPlus.Code.Utils
 
                 return resultData;
             }
+        }
+
+        public static string GetUserFriendlyName(DistrictStyle districtStyle)
+        {
+            var cutover = "BuiltinStyle";
+            var index = districtStyle.Name.IndexOf(cutover);
+            var builtin_name = districtStyle.Name.Substring(0, index);
+            string district_name;
+
+            SteamHelper.DLC dlc_id;
+            // Maybe scope creep over the year, there was no proper style in between old and new DLC naming format
+            if (builtin_name.Equals("European"))
+            {
+                district_name = "European / Vanilla";
+            }
+            else if (builtin_name.Equals("EuropeanSuburbia"))
+            {
+                district_name = "European Suburbia";
+            }
+            else if (builtin_name.Equals("ModderPack5"))
+            {
+                district_name = Locale.Get("DLC_NAME", "ModernCityCenter");
+            }
+            else
+            {
+                district_name = Locale.Get("DLC_NAME", builtin_name);
+            }
+            return district_name;
         }
 
     }

@@ -19,7 +19,7 @@ namespace DistrictStylesPlus.Code.GUI.DistrictStylePicker
 
             if (m_districtStyle == null) return;
             
-            m_name.text = m_districtStyle.Name; 
+            m_name.text = DSPDistrictStylesUtils.GetUserFriendlyName(m_districtStyle); 
             m_name.label.textColor = new Color32(255, 255, 255, 255);
             m_name.label.isInteractive = false;
             m_name.isChecked = IsSelectedStyle(m_districtStyle.FullName);
@@ -37,6 +37,7 @@ namespace DistrictStylesPlus.Code.GUI.DistrictStylePicker
 
         private bool IsSelectedStyle(string fullName)
         {
+            Logging.DebugLog($"DSPickerStyleItem: IsSelectedStyle - {fullName}");
             var selectedStyleFullNames = DistrictStylePickerPanel.instance.GetSelectedStyles();
             return selectedStyleFullNames.Contains(fullName);
         }

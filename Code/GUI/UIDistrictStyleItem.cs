@@ -1,4 +1,5 @@
 ﻿using ColossalFramework.UI;
+using DistrictStylesPlus.Code.Utils;
 using UnityEngine;
 
 namespace DistrictStylesPlus.Code.GUI
@@ -60,7 +61,7 @@ namespace DistrictStylesPlus.Code.GUI
                 m_name.relativePosition = new Vector3(5, 13);
             }
             
-            m_name.text = m_districtStyle.Name;
+            m_name.text = DSPDistrictStylesUtils.GetUserFriendlyName(m_districtStyle);
             UIUtils.TruncateLabel(m_name, parent.width - 30);
 
             //TODO: fix validation
