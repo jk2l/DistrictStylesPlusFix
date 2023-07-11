@@ -67,6 +67,15 @@ namespace DistrictStylesPlus.Code.Utils
                     }
                     else
                     {
+                        // Cities Skylines don't mark CCP that is not owned as BuiltIn
+                        // Styles will still available to load but won't funtional make a hack around it
+                        var cutover = "BuiltinStyle";
+                        var index = districtStyle.Name.IndexOf(cutover);
+                        if (index > "ModderPack".Length)
+                        {
+                            continue;
+                        }
+
                         resultData.Add(districtStyle);
                     }
                 }
