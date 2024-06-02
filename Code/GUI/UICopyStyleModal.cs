@@ -76,10 +76,25 @@ namespace DistrictStylesPlus.Code.GUI
 
             _okBtn.eventClick += (c, p) =>
             {
-                DistrictStyle newStyle = DSPDistrictStyleManager.CreateDistrictStyle(_name.text);
-                foreach (BuildingInfo info in UIDistrictStyleSelectPanel.SelectedDistrictStyle.GetBuildingInfos())
-                {
-                    newStyle.Add(info);
+                var selectedDistrictStyle = UIDistrictStyleSelectPanel.GetSelectedDistrictStyle();
+
+                if (selectedDistrictStyle != null) {
+
+                    DistrictStyle newStyle = DSPDistrictStyleManager.CreateDistrictStyle(_name.text);
+
+                    var buildingInfosToInclude =
+                    UIDistrictStyleSelectPanel.SelectedDistrictStyle.GetBuildingInfos();
+
+                    Logging.DebugLog("Try to add all buildings to style.");
+
+                    foreach (BuildingInfo info in buildingInfosToInclude)
+                    {
+                        newStyle.Add(info);
+                    }
+
+                    DSPDistrictStyleManager.AddBuildingInfoListToStyle(
+                        new List<BuildingInfo>(buildingInfosToInclude), selectedDistrictStyle
+                    );
                 }
 
                 UIDistrictStyleSelectPanel.Instance.RefreshDistrictStyleSelect();
