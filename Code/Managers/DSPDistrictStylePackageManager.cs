@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using BuffPanel;
 using ColossalFramework;
 using ColossalFramework.Packaging;
 using DistrictStylesPlus.Code.GUI;

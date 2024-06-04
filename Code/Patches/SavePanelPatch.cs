@@ -12,8 +12,7 @@ namespace DistrictStylesPlus.Code.Patches
         
         /// <summary>
         /// Called to save the game (including auto save).
-        /// To increase performance, district styles are only written on disk,
-        /// when the game is saved.
+        /// To prevent data loss, district styles are written on disk, when the game is saved.
         /// </summary>
         [HarmonyPrefix]
         [HarmonyPatch(typeof(SavePanel), "SaveGame", new Type[] { typeof(string), typeof(bool), typeof(bool) })]
