@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using ColossalFramework;
 using ColossalFramework.UI;
 using DistrictStylesPlus.Code.Managers;
@@ -82,18 +83,11 @@ namespace DistrictStylesPlus.Code.GUI
 
                     DistrictStyle newStyle = DSPDistrictStyleManager.CreateDistrictStyle(_name.text);
 
-                    var buildingInfosToInclude =
-                    UIDistrictStyleSelectPanel.SelectedDistrictStyle.GetBuildingInfos();
-
-                    Logging.DebugLog("Try to add all buildings to style.");
-
-                    foreach (BuildingInfo info in buildingInfosToInclude)
-                    {
-                        newStyle.Add(info);
-                    }
+                    Logging.DebugLog("Try to add all buildings to new style.");
 
                     DSPDistrictStyleManager.AddBuildingInfoListToStyle(
-                        new List<BuildingInfo>(buildingInfosToInclude), selectedDistrictStyle
+                        selectedDistrictStyle.GetBuildingInfos().ToList(), 
+                        newStyle
                     );
                 }
 
