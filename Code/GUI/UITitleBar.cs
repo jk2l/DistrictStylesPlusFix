@@ -1,5 +1,4 @@
 ﻿using ColossalFramework.UI;
-using DistrictStylesPlus.Code.Managers;
 using UnityEngine;
 
 namespace DistrictStylesPlus.Code.GUI
@@ -68,11 +67,9 @@ namespace DistrictStylesPlus.Code.GUI
             _close.relativePosition = new Vector3(width - 35, 2);
             _close.normalBgSprite = "buttonclose";
             _close.hoveredBgSprite = "buttonclosehover";
-            _close.pressedBgSprite = "loading_icon";
-            _close.tooltip = "Save and Close";
+            _close.pressedBgSprite = "buttonclosepressed";
             _close.eventClick += (component, param) =>
             {
-                StartCoroutine(DSPDistrictStylePackageManager.SaveChangedAssetsOfDistrictStyleMetaDataAsync());
                 if (isModal)
                     UIView.PopModal();
                 parent.Hide();
