@@ -202,7 +202,7 @@ namespace DistrictStylesPlus.Code.Managers
         /// </summary>
         internal static IEnumerator SaveChangedAssetsOfDistrictStyleMetaData() 
         {
-            // PackageManager.DisableEvents() gets already called by StylesHelper.SaveStyle
+            PackageManager.DisableEvents();
 
             if (ModifiedDistrictStyleMetaDatas.Count == 0) {
                 yield break;
@@ -215,9 +215,9 @@ namespace DistrictStylesPlus.Code.Managers
             }
             ModifiedDistrictStyleMetaDatas.Clear();
 
-            // PackageManager.EnabledEvents() gets already called by StylesHelper.SaveStyle
+            PackageManager.EnabledEvents();
             // PackageManager.ForcePackagesChanged() does it have to be called? It can't be called in a async Task 
-            // => If it is required, move it out of the async Task and wait for it to finish before calling..  
+            // => If it is required, move it out of the async Task and wait for the task to finish before calling it..  
             yield return 0;
         }
 
