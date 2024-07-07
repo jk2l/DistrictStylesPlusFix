@@ -204,13 +204,8 @@ namespace DistrictStylesPlus.Code.Managers
         {
             PackageManager.DisableEvents();
 
-            if (ModifiedDistrictStyleMetaDatas.Count == 0) {
-                yield break;
-            }
-
             foreach (DistrictStyleMetaData dsMeta in ModifiedDistrictStyleMetaDatas.Values)
             {
-                yield return 0;
                 StylesHelper.SaveStyle(dsMeta, dsMeta.name, false);
             }
             ModifiedDistrictStyleMetaDatas.Clear();
